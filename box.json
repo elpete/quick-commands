@@ -1,0 +1,40 @@
+{
+    "name":"Quick Commands",
+    "version":"0.0.0",
+    "location":"forgeboxStorage",
+    "author":"Eric Peterson",
+    "homepage":"https://github.com/elpete/quick-commands",
+    "documentation":"https://github.com/elpete/quick-commands",
+    "repository":{
+        "type":"git",
+        "URL":"https://github.com/elpete/quick-commands"
+    },
+    "bugs":"https://github.com/elpete/quick-commands/issues",
+    "slug":"quick-commands",
+    "shortDescription":"Helpful scaffolding tools for Quick",
+    "instructions":"https://github.com/elpete/quick-commands",
+    "type":"commandbox-modules",
+    "keywords":[
+        "quick",
+        "database",
+        "coldbox",
+        "scaffold"
+    ],
+    "scripts":{
+        "onRelease":"publish",
+        "postPublish":"!git push && git push --tags"
+    },
+    "private":false,
+    "license":[
+        {
+            "type":"MIT",
+            "URL":"https://github.com/elpete/quick-commands/blob/master/LICENSE"
+        }
+    ],
+    "dependencies":{
+        "str":"^1.0.3"
+    },
+    "installPaths":{
+        "str":"modules/str/"
+    }
+}
