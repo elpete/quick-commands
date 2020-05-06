@@ -35,6 +35,8 @@ component {
 	 *                 and after an `@` namespace.
 	 * @directory      The directory to create the entity in.  Defaults to `models/entities/`.
 	 * @fileName       The name of the file to create.  Defaults to the name of the entity.
+	 * @overwrite      Flag to automatically overwrite the file, if needed.  Otherwise it will prompt to overwrite a file.
+	 * @open           Flag to automatically open the file that is created.
 	 */
 	function run(
 		required string name,
@@ -44,7 +46,8 @@ component {
 		string relationships = "",
 		string directory = "models/entities/",
 		string fileName = arguments.name,
-		boolean overwrite = false
+		boolean overwrite = false,
+		boolean open = false
 	) {
 		arguments.attributes = explodeAttributes( arguments.attributes );
 		arguments.relationships = explodeRelationships( arguments.relationships );
@@ -67,6 +70,10 @@ component {
 			}
 		}
 		fileWrite( filePath, fileContents );
+
+		if ( arguments.open ) {
+			openPath( filePath );
+		}
 
 		print.line().green( arguments.name ).white( " entity created at " ).yellowLine( filePath );
 	}
