@@ -44,6 +44,7 @@ component {
 		string key = "",
 		string attributes = "",
 		string relationships = "",
+		boolean migration = false,
 		string directory = "models/entities/",
 		string fileName = arguments.name,
 		boolean overwrite = false,
@@ -76,6 +77,16 @@ component {
 		}
 
 		print.line().green( arguments.name ).white( " entity created at " ).yellowLine( filePath );
+
+		if ( !arguments.migration ) {
+			return;
+		}
+
+		var databaseTable = arguments.table != "" ? arguments.table : str.camel( str.plural( arguments.name ) );
+
+		command( "migrate create" )
+			.params( "create_#databaseTable#_table" )
+			.run();
 	}
 
 	private array function explodeAttributes( string attributes = "" ) {
